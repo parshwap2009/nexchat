@@ -1,0 +1,676 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0c0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="NexChat — discover new perspectives through conversations with people around the world.">
+  <title>NexChat — A world of conversations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app-shell" id="app">
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+    <header class="navbar">
+      <a class="brand" href="#home" aria-label="NexChat home">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="13" fill="currentColor"/>
+            <path d="M12 27V13H16L24 22V13H28V27H24L16 18V27H12Z" fill="#10140B"/>
+          </svg>
+        </span>
+        <span class="brand-name">nex<span>chat</span></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#conversation">Chat</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#safety">Safety</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <div class="service-status" id="connectionStatus">
+          <span class="status-indicator" aria-hidden="true"></span>
+          <span id="connectionLabel">Checking service</span>
+        </div>
+
+        <button class="button button-secondary button-small" id="authButton" type="button">
+          Sign in
+        </button>
+
+        <button class="icon-button mobile-menu-button" id="mobileMenuButton"
+          type="button" aria-label="Open navigation" aria-expanded="false"
+          aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" aria-hidden="true">
+            <path d="M4 7H20M4 12H20M4 17H20"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation">
+      <a href="#conversation">Start chatting</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#safety">Safety and privacy</a>
+    </nav>
+
+    <main id="main">
+
+      <!-- =========================================
+           HERO
+      ========================================== -->
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-marker"></span>
+            A different kind of connection
+          </div>
+
+          <h1>
+            The world is full
+            of <span>interesting</span>
+            people.
+          </h1>
+
+          <p class="hero-description">
+            Step outside your usual circle. Meet someone new, share ideas,
+            discover different cultures, and let a simple conversation
+            take you somewhere unexpected.
+          </p>
+
+          <div class="hero-actions">
+            <button class="button button-primary button-large" id="heroStart" type="button">
+              Find someone
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" aria-hidden="true">
+                <path d="M5 12H19M12 5L19 12L12 19"/>
+              </svg>
+            </button>
+
+            <a class="button button-quiet button-large" href="#how-it-works">
+              Discover NexChat
+            </a>
+          </div>
+
+          <div class="hero-footnote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.7" aria-hidden="true">
+              <path d="M12 3L19 6V11.5C19 16 16.1 19 12 21C7.9 19 5 16 5 11.5V6L12 3Z"/>
+              <path d="M9 12L11 14L15.5 9.5"/>
+            </svg>
+            Respectful conversations. Privacy by design.
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Abstract NexChat brand illustration">
+          <div class="art-glow"></div>
+          <div class="art-ring art-ring-one"></div>
+          <div class="art-ring art-ring-two"></div>
+          <div class="art-ring art-ring-three"></div>
+
+          <div class="art-center">
+            <div class="art-center-mark">n.</div>
+            <span class="art-center-label">NEXCHAT</span>
+            <span class="art-center-caption">Beyond your usual world.</span>
+          </div>
+
+          <div class="art-chip art-chip-top">
+            <span class="art-chip-icon">✳</span>
+            <span>New perspectives</span>
+          </div>
+
+          <div class="art-chip art-chip-left">
+            <span class="art-chip-icon">◎</span>
+            <span>Real conversations</span>
+          </div>
+
+          <div class="art-chip art-chip-right">
+            <span class="art-chip-icon">↗</span>
+            <span>Different worlds</span>
+          </div>
+
+          <div class="art-decoration decoration-one"></div>
+          <div class="art-decoration decoration-two"></div>
+        </div>
+      </section>
+
+      <!-- =========================================
+           VALUE STRIP
+      ========================================== -->
+      <section class="value-strip" aria-label="NexChat principles">
+        <div class="value-item">
+          <span class="value-number">01</span>
+          <span>Meet beyond your circle</span>
+        </div>
+        <div class="value-item">
+          <span class="value-number">02</span>
+          <span>Talk in your language</span>
+        </div>
+        <div class="value-item">
+          <span class="value-number">03</span>
+          <span>Stay in control</span>
+        </div>
+      </section>
+
+      <!-- =========================================
+           CONVERSATION WORKSPACE
+      ========================================== -->
+      <section class="conversation-section" id="conversation">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">YOUR NEXT CONVERSATION</span>
+            <h2>Somewhere new starts here.</h2>
+            <p>Choose your preferences and find your next conversation.</p>
+          </div>
+
+          <div class="workspace-status" id="workspaceStatus">
+            <span class="status-indicator"></span>
+            <span id="workspaceStatusText">Connecting</span>
+          </div>
+        </div>
+
+        <div class="workspace-grid">
+
+          <!-- Main chat -->
+          <section class="panel chat-panel" aria-label="Conversation">
+            <header class="chat-header">
+              <div class="chat-person">
+                <div class="person-avatar" id="partnerAvatar" aria-hidden="true">
+                  <span>✳</span>
+                </div>
+
+                <div class="person-information">
+                  <h3 id="chatTitle">Your conversation</h3>
+                  <p id="chatSubtitle">Find someone to begin.</p>
+                </div>
+              </div>
+
+              <div class="chat-header-right">
+                <span class="chat-connection" id="chatStatus">
+                  <span class="status-indicator"></span>
+                  <span>Waiting</span>
+                </span>
+
+                <button class="icon-button" id="chatOptionsButton"
+                  type="button" aria-label="Conversation options"
+                  aria-expanded="false" aria-controls="chatOptionsMenu">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <circle cx="5" cy="12" r="1.7"/>
+                    <circle cx="12" cy="12" r="1.7"/>
+                    <circle cx="19" cy="12" r="1.7"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="chat-options-menu" id="chatOptionsMenu" hidden>
+                <button id="chatMenuReport" type="button">Report this person</button>
+                <button id="chatMenuBlock" type="button">Block this person</button>
+                <button id="chatMenuLeave" type="button">Leave conversation</button>
+              </div>
+            </header>
+
+            <div class="chat-intro-banner" id="chatIntroBanner">
+              <span class="intro-symbol">✳</span>
+              <div>
+                <strong>A fresh conversation awaits.</strong>
+                <p>Be curious, be kind, and keep your personal information private.</p>
+              </div>
+            </div>
+
+            <div
+              class="chat-messages"
+              id="chatBody"
+              role="log"
+              aria-live="polite"
+              aria-relevant="additions text"
+              aria-label="Chat messages"
+            >
+              <div class="empty-state" id="welcome">
+                <div class="empty-state-illustration">
+                  <div class="empty-state-orbit"></div>
+                  <span>✳</span>
+                </div>
+
+                <span class="empty-state-kicker">YOUR NEXT CHAPTER</span>
+                <h3>Start with a hello.</h3>
+
+                <p>
+                  Choose a language and look for someone new.
+                  Your conversation will appear here after a successful match.
+                </p>
+
+                <button class="button button-primary" id="emptyStart" type="button">
+                  Find someone <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator" hidden aria-live="polite">
+              <span class="typing-dots"><i></i><i></i><i></i></span>
+              <span>Someone is typing</span>
+            </div>
+
+            <form class="message-composer" id="messageForm">
+              <label for="messageInput" class="visually-hidden">Write your message</label>
+
+              <input
+                id="messageInput"
+                name="message"
+                type="text"
+                maxlength="1000"
+                placeholder="Find someone before sending a message..."
+                autocomplete="off"
+                disabled
+                required
+              >
+
+              <button class="send-button" id="sendButton" type="submit"
+                aria-label="Send message" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" aria-hidden="true">
+                  <path d="M12 19V5M5 12L12 5L19 12"/>
+                </svg>
+              </button>
+            </form>
+
+            <footer class="composer-meta">
+              <span>Keep it respectful. Think before you share.</span>
+              <span id="characterCount">0 / 1000</span>
+            </footer>
+          </section>
+
+          <!-- Settings and safety -->
+          <aside class="workspace-sidebar">
+
+            <section class="panel match-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">DISCOVER</span>
+                  <h3>Find your person.</h3>
+                  <p>A new conversation is one step away.</p>
+                </div>
+
+                <div class="panel-heading-icon" aria-hidden="true">↗</div>
+              </div>
+
+              <div class="panel-content">
+                <div class="form-group">
+                  <label for="languageSelect">Conversation language</label>
+
+                  <select id="languageSelect" name="language">
+                    <option value="any">Any available language</option>
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी — Hindi</option>
+                    <option value="mr">मराठी — Marathi</option>
+                    <option value="bn">বাংলা — Bengali</option>
+                    <option value="ta">தமிழ் — Tamil</option>
+                    <option value="te">తెలుగు — Telugu</option>
+                    <option value="gu">ગુજરાતી — Gujarati</option>
+                    <option value="kn">ಕನ್ನಡ — Kannada</option>
+                    <option value="ml">മലയാളം — Malayalam</option>
+                    <option value="pa">ਪੰਜਾਬੀ — Punjabi</option>
+                    <option value="ur">اردو — Urdu</option>
+                    <option value="or">ଓଡ଼ିଆ — Odia</option>
+                    <option value="as">অসমীয়া — Assamese</option>
+                  </select>
+
+                  <span class="field-hint">
+                    Only select languages you can comfortably communicate in.
+                  </span>
+                </div>
+
+                <div class="match-actions">
+                  <button class="button button-primary button-full"
+                    id="findButton" type="button">
+                    Find someone
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.8" aria-hidden="true">
+                      <path d="M5 12H19M12 5L19 12L12 19"/>
+                    </svg>
+                  </button>
+
+                  <button class="button button-secondary button-full"
+                    id="nextButton" type="button" disabled>
+                    Next person
+                  </button>
+
+                  <button class="button button-quiet button-full"
+                    id="leaveButton" type="button" disabled>
+                    Leave conversation
+                  </button>
+                </div>
+
+                <div class="match-notice" id="matchNotice" role="status" aria-live="polite">
+                  Connecting to NexChat services...
+                </div>
+              </div>
+            </section>
+
+            <section class="panel safety-panel" id="safety">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">YOUR WELLBEING</span>
+                  <h3>Stay in control.</h3>
+                  <p>Good conversations respect boundaries.</p>
+                </div>
+
+                <div class="safety-icon" aria-hidden="true">◇</div>
+              </div>
+
+              <div class="panel-content">
+                <article class="safety-tip">
+                  <span class="safety-tip-number">01</span>
+                  <div>
+                    <h4>Keep private details private</h4>
+                    <p>Do not share passwords, your address, school details, or live location.</p>
+                  </div>
+                </article>
+
+                <article class="safety-tip">
+                  <span class="safety-tip-number">02</span>
+                  <div>
+                    <h4>You can leave at any time</h4>
+                    <p>You never have to continue a conversation that makes you uncomfortable.</p>
+                  </div>
+                </article>
+
+                <article class="safety-tip">
+                  <span class="safety-tip-number">03</span>
+                  <div>
+                    <h4>Block and report</h4>
+                    <p>Report harassment, threats, scams, or requests that cross your boundaries.</p>
+                  </div>
+                </article>
+
+                <a class="safety-link" href="privacy.html">
+                  Read our privacy principles <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </section>
+
+          </aside>
+        </div>
+      </section>
+
+      <!-- =========================================
+           HOW IT WORKS
+      ========================================== -->
+      <section class="how-section" id="how-it-works">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">SIMPLE BY DESIGN</span>
+            <h2>Three steps. A whole new world.</h2>
+            <p>No complicated profile setup needed to understand the experience.</p>
+          </div>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-index">01 / CHOOSE</span>
+            <div class="step-icon" aria-hidden="true">⌘</div>
+            <h3>Set your language</h3>
+            <p>Choose a language preference and tell NexChat how you want to connect.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-index">02 / CONNECT</span>
+            <div class="step-icon" aria-hidden="true">↗</div>
+            <h3>Meet someone new</h3>
+            <p>The matching service can pair you with an available user when the backend is configured.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-index">03 / CONVERSE</span>
+            <div class="step-icon" aria-hidden="true">✳</div>
+            <h3>Let the conversation flow</h3>
+            <p>Talk, exchange ideas, and leave whenever you choose. Respect comes first.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================
+           PRIVACY PROMISE
+      ========================================== -->
+      <section class="privacy-section">
+        <div class="privacy-visual" aria-hidden="true">
+          <div class="privacy-orbit privacy-orbit-one"></div>
+          <div class="privacy-orbit privacy-orbit-two"></div>
+          <div class="privacy-lock">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.6">
+              <rect x="11" y="21" width="26" height="20" rx="5"/>
+              <path d="M17 21V15C17 11.1 20.1 8 24 8C27.9 8 31 11.1 31 15V21"/>
+              <circle cx="24" cy="30" r="2.5"/>
+              <path d="M24 32.5V36"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="privacy-copy">
+          <span class="section-kicker">PRIVACY IS NOT AN EXTRA</span>
+          <h2>Your conversation should stay yours.</h2>
+          <p>
+            NexChat is being built with privacy and user control in mind.
+            Secure account handling, private room access, and properly
+            enforced database policies are essential parts of the real service.
+          </p>
+
+          <ul class="privacy-list">
+            <li><span>✓</span> Authenticated account access</li>
+            <li><span>✓</span> Private conversation permissions</li>
+            <li><span>✓</span> Block and report workflows</li>
+            <li><span>✓</span> Clear ways to leave a chat</li>
+          </ul>
+
+          <a class="text-link" href="privacy.html">
+            Explore privacy information <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- =========================================
+           FINAL CTA
+      ========================================== -->
+      <section class="final-cta">
+        <div class="final-cta-decoration" aria-hidden="true"></div>
+        <span class="section-kicker">YOUR NEXT CONVERSATION</span>
+        <h2>Someone out there has<br> a story you haven't heard.</h2>
+        <p>Start with a hello. See where the conversation takes you.</p>
+
+        <button class="button button-primary button-large" id="bottomStart" type="button">
+          Find someone
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" aria-hidden="true">
+            <path d="M5 12H19M12 5L19 12L12 19"/>
+          </svg>
+        </button>
+      </section>
+
+    </main>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="footer">
+      <a class="brand footer-brand" href="#home" aria-label="NexChat home">
+        <span class="brand-symbol">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <rect width="40" height="40" rx="13" fill="currentColor"/>
+            <path d="M12 27V13H16L24 22V13H28V27H24L16 18V27H12Z" fill="#10140B"/>
+          </svg>
+        </span>
+        <span class="brand-name">nex<span>chat</span></span>
+      </a>
+
+      <p class="footer-copy">
+        A world of conversations.
+        <span id="currentYear"></span>
+      </p>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#how-it-works">About</a>
+        <a href="#safety">Safety</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </footer>
+  </div>
+
+  <!-- =========================================
+       AUTHENTICATION MODAL
+  ========================================== -->
+  <div class="modal-backdrop" id="authModal" hidden>
+    <section class="dialog auth-dialog" role="dialog" aria-modal="true"
+      aria-labelledby="authTitle" aria-describedby="authDescription">
+
+      <header class="dialog-header">
+        <div class="dialog-brand">
+          <span class="brand-symbol"><span>n</span></span>
+          <span class="brand-name">nex<span>chat</span></span>
+        </div>
+
+        <button class="icon-button" id="closeAuth" type="button"
+          aria-label="Close sign-in dialog">×</button>
+      </header>
+
+      <span class="section-kicker">YOUR NEXCHAT ACCOUNT</span>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p class="dialog-description" id="authDescription">
+        Sign in to continue to your account.
+      </p>
+
+      <form id="authForm">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email"
+            autocomplete="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password"
+            minlength="8" autocomplete="current-password"
+            placeholder="At least 8 characters" required>
+        </div>
+
+        <div class="form-group" id="confirmPasswordWrap" hidden>
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password"
+            minlength="8" autocomplete="new-password"
+            placeholder="Enter your password again">
+        </div>
+
+        <button class="button button-primary button-full" id="authSubmit" type="submit">
+          Sign in
+        </button>
+      </form>
+
+      <div class="auth-switch">
+        <span id="authSwitchText">New to NexChat?</span>
+        <button class="text-link-button" id="authSwitch" type="button">
+          Create an account
+        </button>
+      </div>
+
+      <div class="auth-forgot">
+        <button class="text-link-button" id="forgotButton" type="button">
+          Forgot password?
+        </button>
+      </div>
+
+      <div class="dialog-notice" id="authNotice" role="status" aria-live="polite">
+        Checking authentication service...
+      </div>
+
+      <p class="dialog-legal">
+        By creating an account, you agree to our
+        <a href="terms.html">Terms</a> and
+        <a href="privacy.html">Privacy Policy</a>.
+      </p>
+    </section>
+  </div>
+
+  <!-- =========================================
+       REPORT / BLOCK CONFIRMATION
+  ========================================== -->
+  <div class="modal-backdrop" id="actionModal" hidden>
+    <section class="dialog action-dialog" role="dialog" aria-modal="true"
+      aria-labelledby="actionTitle" aria-describedby="actionDescription">
+
+      <header class="dialog-header">
+        <span class="section-kicker">YOUR SAFETY MATTERS</span>
+
+        <button class="icon-button" id="closeAction" type="button"
+          aria-label="Close confirmation dialog">×</button>
+      </header>
+
+      <h2 id="actionTitle">Confirm your action.</h2>
+      <p class="dialog-description" id="actionDescription"></p>
+
+      <div class="form-group" id="reportReasonGroup" hidden>
+        <label for="reportReason">Why are you reporting this user?</label>
+        <select id="reportReason" name="reportReason">
+          <option value="">Select a reason</option>
+          <option value="harassment">Harassment or bullying</option>
+          <option value="threats">Threats or intimidation</option>
+          <option value="spam">Spam or scam</option>
+          <option value="inappropriate">Inappropriate requests</option>
+          <option value="privacy">Privacy violation</option>
+          <option value="other">Other safety concern</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="reportDetailsGroup" hidden>
+        <label for="reportDetails">Additional details (optional)</label>
+        <textarea id="reportDetails" name="reportDetails" rows="3"
+          maxlength="500" placeholder="Share relevant details without including sensitive information."></textarea>
+      </div>
+
+      <div class="dialog-actions">
+        <button class="button button-secondary" id="cancelAction" type="button">
+          Cancel
+        </button>
+        <button class="button button-danger" id="confirmAction" type="button">
+          Confirm
+        </button>
+      </div>
+
+      <div class="dialog-notice" id="actionNotice" role="status" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <!-- =========================================
+       TOAST NOTIFICATIONS
+  ========================================== -->
+  <div class="toast-container" id="toastContainer"
+    aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =========================================
+       NOSCRIPT MESSAGE
+  ========================================== -->
+  <noscript>
+    <div class="noscript-notice">
+      NexChat requires JavaScript to provide interactive features.
+      Enable JavaScript in your browser to continue.
+    </div>
+  </noscript>
+
+</body>
+</html>
